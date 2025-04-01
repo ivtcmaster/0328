@@ -1,0 +1,49 @@
+name: Deploy static content with CI checks
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # CI: HTML Validation
+      - name: Validate HTML
+        run: |
+          npx html-validator-cli index.html
+
+      # CI: Check broken links
+      - name: Check broken links
+        run: |
+          npx linkinator . --silent
+
+      # CI: Minify CSS
+      - name: Minify CSS
+        run: |
+          npx cssnano style.css -o style.min.css
+
+      # CD: Setup Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # CD: Upload artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      # CD: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
