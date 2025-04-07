@@ -1,76 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #0078D7;
-            color: white;
-            padding: 20px 0;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .intro-image {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h1>Welcome to My Homepage</h1>
-    </header>
-    <main>
-        <p>This is a simple homepage created as an example.</p>
-        <p>Feel free to customize it as needed!</p>
-
-        <p>This is a simple homepage created as an example.</p>
-        <p>Feel free to customize it as needed!</p>
-
-
-        <!-- <button type="button" >按下去</button>
-        <p id="demo">按按鈕這邊會改變變成日期</p> -->
-
-        <button id="demo">按下去</button>
-        <p onclick="displayDate()">按按鈕這邊會改變變成日期</p>
-
-    </main>
-    <footer>
-        <p>&copy; 2023 My Website</p>
-    </footer>
-</body>
-
-<script>
-    // JavaScript function to display the current date and time
-
-    function displayDate() {
-        document.getElementById("demo").innerHTML = Date();
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>削減模型ver3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
     }
-</script>
-
+    input {
+      padding: 10px;
+      width: 300px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+    }
+    #response {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>這是宇智波騙你的內容</h1>
+  <input id="userInput" type="text" placeholder="輸入問題...">
+  <button onclick="sendRequest()">發送</button>
+  <div id="response"></div>
+  <script src="aigogo.js"></script>
+</body>
 </html>
